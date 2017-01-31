@@ -1,0 +1,44 @@
+.container {
+
+}
+.feedContainer {
+  min-width: 512px;
+  margin: 20px auto;
+}
+.headerContainer {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  .userContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    .avatar {
+      margin-left: 5px;
+      max-height: 40px;
+      min-width: 40px;
+      max-width: 40px;
+      min-height: 40px;
+      border-radius: 20px;
+    }
+    .userNameContainer {
+      display: flex;
+      align-items: center;
+      margin: 0px 10px;
+    }
+  }
+}
+
+.title {
+  font-size: 25px !important;
+  margin: 0px auto;
+}
+.favouriteContainer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 15px !important;
+  margin-right: 10px;
+}

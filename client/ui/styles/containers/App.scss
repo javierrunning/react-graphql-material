@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+$white: #FFFFFF;
+$black: #333333;
+$gray: #E3E3E3;
+$blue: #00BCD4;
+$black-light: #2B2D2E;
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.greeting {
+  background-color: $blue;
+  color: $white;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.sawasdee {
+  font-size: 2.5em;
+  font-weight: normal;
+}
+
+.content {
+  flex: 1;
+  margin: 10px 30px;
+}
+
+/**
+ * Responsive text
+ */
+
+@media screen and (max-width: 992px) {
+  .greeting {
+    padding-top: 20px;
+  }
+  p, .btn, .btn_1, input, div, h4, sup {
+    font-size: 99% !important;
+  }
+  h1 {
+    font-size: 34px !important;
+  }
+  h2 {
+    font-size: 32px !important;
+  }
+  h3 {
+    font-size: 28px !important;
+  }
+  .btn, .btn_1 {
+    height: 34px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    border-radius: 4px !important;
+  }
+  select {
+    height: 34px !important;
+    line-height: 34px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  p, .btn, .btn_1, input, div, h4, sup {
+    font-size: 98% !important;
+  }
+  h1 {
+    font-size: 30px !important;
+  }
+  h2 {
+    font-size: 28px !important;
+  }
+  h3 {
+    font-size: 26px !important;
+  }
+  .btn, .btn_1 {
+    height: 30px !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    border-radius: 3px !important;
+  }
+  select {
+    height: 30px !important;
+    line-height: 30px !important;
+  }
+  button {
+    font-size: 11px !important;
+    padding: 0 3px !important;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  p, .btn, .btn_1, input, div, h4, sup {
+    font-size: 97% !important;
+  }
+  h1 {
+    font-size: 28px !important;
+  }
+  h2 {
+    font-size: 26px !important;
+  }
+  h3 {
+    font-size: 24px !important;
+  }
+  .btn, .btn_1 {
+    height: 28px !important;
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    border-radius: 3px !important;
+  }
+  select {
+    height: 30px !important;
+    line-height: 30px !important;
+  }
+}

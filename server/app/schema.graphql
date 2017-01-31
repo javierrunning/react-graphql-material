@@ -1,0 +1,202 @@
+# All Feeds Information
+type AllFeeds implements Node {
+  # The ID of an object
+  id: ID!
+
+  # all feeds list
+  items: [Feed]
+
+  # author user list
+  authors: Authors
+}
+
+# A author who is followed by current login user
+type Author implements Node {
+  # The ID of an object
+  id: ID!
+
+  # user email
+  email: String
+
+  # user name
+  name: String
+
+  # status for author user
+  author: Boolean
+
+  # user photo url path
+  photo: String
+
+  # following status for current author
+  following: String
+
+  # following users count for current author
+  followedCount: String
+
+  # following users count for current author
+  category: String
+}
+
+# Authors Information
+type Authors implements Node {
+  # The ID of an object
+  id: ID!
+
+  # all authors list
+  authors: [Author]
+}
+
+# A category list
+type Category implements Node {
+  # The ID of an object
+  id: ID!
+  type: String
+  image: String
+}
+
+# Feed item
+type Feed implements Node {
+  # The ID of an object
+  id: ID!
+
+  # Feed title
+  title: String
+
+  # Feed description
+  description: String
+
+  # Feed Image path
+  image: String
+
+  # Total like count for current feed
+  likedCount: Int
+
+  # current user liked status
+  liked: Boolean
+
+  # author user id
+  createdBy: String
+}
+
+input followingAuthorInput {
+  authorId: String
+  following: Boolean
+  query: String
+  offset: Int
+  limit: Int
+  clientMutationId: String
+}
+
+type followingAuthorPayload {
+  authors: Authors
+  clientMutationId: String
+}
+
+input getAuthorsByCategoriesInput {
+  categoryTypes: [String]
+  clientMutationId: String
+}
+
+type getAuthorsByCategoriesPayload {
+  authors: [Author]
+  clientMutationId: String
+}
+
+input likeFeedInput {
+  feedId: String
+  liked: Boolean
+  clientMutationId: String
+}
+
+type likeFeedPayload {
+  feed: Feed
+  clientMutationId: String
+}
+
+input loginInput {
+  id: String!
+  name: String!
+  email: String!
+  author: Boolean
+  photo: String!
+  facebookToken: String
+  googleToken: String
+  clientMutationId: String
+}
+
+type loginPayload {
+  user: User
+  accessToken: String
+  clientMutationId: String
+}
+
+type Mutation {
+  signup(input: signupInput!): signupPayload
+  login(input: loginInput!): loginPayload
+  likeFeed(input: likeFeedInput!): likeFeedPayload
+  followingAuthor(input: followingAuthorInput!): followingAuthorPayload
+  getAuthorsByCategories(input: getAuthorsByCategoriesInput!): getAuthorsByCategoriesPayload
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+type Query {
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+
+  # Viewer query
+  viewer: ViewerType
+}
+
+input signupInput {
+  id: String!
+  name: String!
+  email: String!
+  author: Boolean
+  photo: String!
+  clientMutationId: String
+}
+
+type signupPayload {
+  user: User
+  accessToken: String
+  clientMutationId: String
+}
+
+# A person who uses our app
+type User implements Node {
+  # The ID of an object
+  id: ID!
+
+  # user email
+  email: String
+
+  # user name
+  name: String
+
+  # status for author user
+  author: Boolean
+
+  # user photo url path
+  photo: String
+  followingAuthors: [Author]
+}
+
+# A viewer object
+type ViewerType {
+  # Get User information
+  user(id: String): User
+
+  # Get Feeds information
+  feeds(query: String, offset: Int, limit: Int): AllFeeds
+
+  # Get Categories information
+  categories: [Category]
+}
